@@ -11,6 +11,7 @@ import Home3 from '../components/Home3/Main'
 import Navbar from '../components/Navbar/Main'
 import ProjectDetails from '../components/Project/ProjectDetails/Main'
 import Projects from '../components/Project/Projects/Main'
+import WhatWeDo from '../components/WhatWeDo/Projects/Main.js'
 import CyberSecurity from '../components/Services/CyberSecurity/Main'
 import InfrastructurePlan from '../components/Services/InfrastructurePlan/Main'
 import ITConsultant from '../components/Services/ITConsultant/Main'
@@ -19,6 +20,7 @@ import QATesting from '../components/Services/QATesting/Main'
 import Service1 from '../components/Services/Services1/Main'
 import Service2 from '../components/Services/Services2/Main'
 import Team from '../components/Team/Main'
+
 
 const Routing = () => {
     const [homepage, sethomepage] = useState(false)
@@ -48,6 +50,7 @@ const Routing = () => {
                 <Route path="/infrastructure-plan" element={<InfrastructurePlan />} />
                 <Route path="/it-consultant" element={<ITConsultant />} />
                 <Route path="/projects" element={<Projects />} />
+                <Route path="/whatwedo" element={<WhatWeDo />} />
                 <Route path="/project-details" element={<ProjectDetails />} />
                 <Route path="/blog" element={<Blogs />} />
                 <Route path="/blog-details" element={<BlogDetails />} />
