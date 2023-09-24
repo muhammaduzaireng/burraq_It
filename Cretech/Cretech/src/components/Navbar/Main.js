@@ -15,16 +15,20 @@ const Navbar = () => {
     const [header, setheader] = useState(false)
     const [pages, setpages] = useState(false)
     const [service, setservice] = useState(false)
+    const [sectors, setsectors] = useState(false)
     const [project, setproject] = useState(false)
     const [blog, setblog] = useState(false)
 
     const activeMenu = () => {
-        if (path === "/" || path === "/home-02" || path === "/home-03") {
+        if (path === "/" ) {
             setmenu({ home: true })
         } else if (path === "/about" || path === "/team") {
             setmenu({ pages: true })
-        } else if (path === "/service-01" || path === "/service-02" || path === "qa-testing" || path === "/it-management" || path === "cyber-security" || path === "/it-consultant" || path === "/infrastructure-plan") {
+        } else if (path === "/" || path === "/service-02" || path === "qa-testing" || path === "/it-management" || path === "cyber-security" || path === "/it-consultant" || path === "/infrastructure-plan") {
             setmenu({ services: true })
+        }
+        else if (path === "/" || path === "/service-02" || path === "qa-testing" || path === "/it-management" || path === "cyber-security" || path === "/it-consultant" || path === "/infrastructure-plan") {
+            setmenu({ sectors: true })
         } else if (path === "/projects" || path === "/project-details") {
             setmenu({ project: true })
         } else if (path === "/blog" || path === "/blog-details") {
@@ -111,19 +115,22 @@ const Navbar = () => {
                             </ul> */}
                         </li>
                         <li className={`menu-item-has-children ${menu.pages && "current"}`}>
-                            <Link to="#">What We DO</Link>
+                            <Link to="/whatwedo">What We DO</Link>
                             
                         </li>
                         <li className={`menu-item-has-children ${menu.services && "current"}`}>
-                            <Link to="/service-01">Solutions</Link>
+                            <Link to="#">Solutions</Link>
                             <ul>
+                                <li><Link to="/service-02">IT & NETWORKING</Link></li>
+                                
+                                
+                                <li><Link to="/cyber-security">SURVEILLANCE & SECURITY</Link></li>
                                 <li><Link to="/service-01">Audio & Video</Link></li>
-                                <li><Link to="/service-02">Services 02</Link></li>
-                                <li><Link to="/cyber-security">Cyber Security</Link></li>
-                                <li><Link to="/it-management">IT Management</Link></li>
-                                <li><Link to="/qa-testing">QA & Testing</Link></li>
-                                <li><Link to="/infrastructure-plan">Infrastructure Plan</Link></li>
-                                <li><Link to="/it-consultant">IT Consultant</Link></li>
+                                
+                                
+                                <li><Link to="/qa-testing">CYBER & DATA SECURITY</Link></li>
+                                <li><Link to="/infrastructure-plan">DATA CENTER</Link></li>
+                                
                             </ul>
                         </li>
                         <li className={`menu-item-has-children ${menu.services && "current"}`}>
@@ -197,41 +204,20 @@ const Navbar = () => {
                     </div>
                     <div className="mobile-nav__container"><ul className="mobile-menu__list">
                         <li className={`menu-item-has-children ${menu.home ? "current" : ""}`}>
-                            <Link to="/" className={home ?"expanded": ""}>Home<button aria-label="dropdown toggler" onClick={()=>setHome(!home)} className={home ?"expanded": ""}><i className="fa fa-angle-down"></i></button></Link>
+                            <Link to="/" className={home ?"expanded": ""}>Home</Link>
                             {home && 
                             <ul style={{display:"block"}}>
-                                <li><Link to="/">Home One</Link></li>
-                                <li><Link to="/home-02">Home Two</Link></li>
-                                <li><Link to="/home-03">Home Three</Link></li>
-                                <li className="menu-item-has-children current"><Link to="/" className={header ?"expanded": ""}>Header Styles<button aria-label="dropdown toggler" onClick={()=>setheader(!header)} className={header ?"expanded": ""}><i className="fa fa-angle-down"></i></button></Link>
+                                {/* <li><Link to="/">Home One</Link></li> */}
+                                {/* <li><Link to="/home-02">Home Two</Link></li>
+                                <li><Link to="/home-03">Home Three</Link></li> */}
+                                {/* <li className="menu-item-has-children current"><Link to="/" className={header ?"expanded": ""}>Header Styles<button aria-label="dropdown toggler" onClick={()=>setheader(!header)} className={header ?"expanded": ""}><i className="fa fa-angle-down"></i></button></Link>
                                     {header &&
                                     <ul style={{display:"block"}}>
                                         <li><Link to="/">Header One</Link></li>
                                         <li><Link to="/home-02">Header Two</Link></li>
                                         <li><Link to="/home-03">Header Three</Link></li>
                                     </ul>}
-                                </li>
-                            </ul>}
-                        </li>
-                        <li className={`menu-item-has-children ${menu.pages ? "current" : ""}`}>
-                            <Link to="#" className={pages ?"expanded": ""}>Pages<button aria-label="dropdown toggler" onClick={()=>setpages(!pages)} className={pages ?"expanded": ""}><i className="fa fa-angle-down"></i></button></Link>
-                            {pages &&
-                            <ul style={{display:"block"}}>
-                                <li><Link to="/about">About Us</Link></li>
-                                <li><Link to="/team">Our Team</Link></li>
-                            </ul>}
-                        </li>
-                        <li className={`menu-item-has-children ${menu.services ? "current" : ""}`}>
-                            <Link to="#" className={service ?"expanded": ""}>Services<button aria-label="dropdown toggler" onClick={()=>setservice(!service)} className={service ?"expanded": ""}><i className="fa fa-angle-down"></i></button></Link>
-                            {service &&
-                            <ul style={{display:"block"}}>
-                                <li><Link to="/service-01">Services 01</Link></li>
-                                <li><Link to="/service-02">Services 02</Link></li>
-                                <li><Link to="/cyber-security">Cyber Security</Link></li>
-                                <li><Link to="/it-management">IT Management</Link></li>
-                                <li><Link to="/qa-testing">QA &amp; Testing</Link></li>
-                                <li><Link to="/infrastructure-plan">Infrastructure Plan</Link></li>
-                                <li><Link to="/it-consultent">IT Consultent</Link></li>
+                                </li> */}
                             </ul>}
                         </li>
                         <li className={`menu-item-has-children ${menu.project ? "current" : ""}`}>
@@ -242,6 +228,52 @@ const Navbar = () => {
                                 <li><Link to="/project-details">Projects Details</Link></li>
                             </ul>}
                         </li>
+                        <li className={`menu-item-has-children ${menu.project ? "current" : ""}`}>
+                            <Link to="/whatwedo" className={project ?"expanded": ""}>What We Do</Link>
+                            
+                        </li>
+                        <li className={`menu-item-has-children ${menu.services ? "current" : ""}`}>
+                            <Link to="#" className={service ?"expanded": ""}>Solutions<button aria-label="dropdown toggler" onClick={()=>setservice(!service)} className={service ?"expanded": ""}><i className="fa fa-angle-down"></i></button></Link>
+                            {service &&
+                            <ul style={{display:"block"}}>
+                                
+                                <li><Link to="/service-02">IT & NETWORKING</Link></li>
+                                
+                                
+                                <li><Link to="/cyber-security">SURVEILLANCE & SECURITY</Link></li>
+                                <li><Link to="/service-01">Audio & Video</Link></li>
+                                
+                                
+                                <li><Link to="/qa-testing">CYBER & DATA SECURITY</Link></li>
+                                <li><Link to="/infrastructure-plan">DATA CENTER</Link></li>
+                                
+                            
+                            </ul>}
+                        </li>
+                        <li className={`menu-item-has-children ${menu.sectors ? "current" : ""}`}>
+                            <Link to="#" className={sectors ?"expanded": ""}>Sectors<button aria-label="dropdown toggler" onClick={()=>setsectors(!sectors)} className={sectors ?"expanded": ""}><i className="fa fa-angle-down"></i></button></Link>
+                            {sectors &&
+                            <ul style={{display:"block"}}>
+                                <li><Link to="/service-01">Hospitality</Link></li>
+                                <li><Link to="/service-02">Education</Link></li>
+                                <li><Link to="/cyber-security">Finanace</Link></li>
+                                <li><Link to="/it-management"></Link></li>
+                                <li><Link to="/qa-testing">HealthCare</Link></li>
+                                <li><Link to="/infrastructure-plan">Retails</Link></li>
+                                <li><Link to="/it-consultant">Industrial</Link></li>
+                                <li><Link to="/it-consultant">Defence</Link></li>
+                            </ul>}
+                        </li>
+                        {/* <li className={`menu-item-has-children ${menu.pages ? "current" : ""}`}>
+                            <Link to="#" className={pages ?"expanded": ""}>Pages<button aria-label="dropdown toggler" onClick={()=>setpages(!pages)} className={pages ?"expanded": ""}><i className="fa fa-angle-down"></i></button></Link>
+                            {pages &&
+                            <ul style={{display:"block"}}>
+                                <li><Link to="/about">About Us</Link></li>
+                                <li><Link to="/team">Our Team</Link></li>
+                            </ul>}
+                        </li> */}
+                        
+                        
                         <li className={`menu-item-has-children ${menu.blog ? "current" : ""}`}>
                             <Link to="#" className={blog ?"expanded": ""}>Blog<button aria-label="dropdown toggler" onClick={()=>setblog(!blog)} className={blog ?"expanded": ""}><i className="fa fa-angle-down"></i></button></Link>
                             {blog &&
